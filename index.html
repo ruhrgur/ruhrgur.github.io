@@ -73,9 +73,17 @@
 
 		<!-- Content -->
 		<div id="container">
-			<h1>Gegenwärtige Sternzeit</h1>
+			<div class="lcars-atomic-tangerine-color">
+			<h3>Sternzeit</h3>
+			</div>
 			<div class="lcars-lilac-color">
-			<h2 id="result">N/A</h2>
+			<h3 id="result">N/A</h3>
+			</div>
+			<div class="lcars-atomic-tangerine-color">
+			<h3>Bordzeit</h3>
+			</div>
+			<div class="lcars-lilac-color">
+			<h3 id="result2">N/A</h3>
 			</div>
 			<script>
 			  function isLeapYear(y) {
@@ -106,7 +114,22 @@
 			  const year = today.getFullYear();
 			  const result = calculateResult(day, month, year);
 			  document.getElementById('result').textContent = `${result}`;
-		  </script>
+		  	</script>
+			<script>
+				function aktualisiereUhrzeit() {
+					const jetzt = new Date();
+					let stunden = jetzt.getHours();
+					let minuten = jetzt.getMinutes();
+					let sekunden = jetzt.getSeconds();
+					stunden = stunden < 10 ? '0' + stunden : stunden;
+					minuten = minuten < 10 ? '0' + minuten : minuten;
+					sekunden = sekunden < 10 ? '0' + sekunden : sekunden;
+					const uhrzeit = `${stunden}:${minuten}:${sekunden}`;
+					document.getElementById('result2').textContent = uhrzeit;
+				}
+				aktualisiereUhrzeit();
+				setInterval(aktualisiereUhrzeit, 1000);
+			</script>
 			<div style="text-align:right;"><small><a href="./impressum.html">Impressum</a> · <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement">Datenschutz</a></small></div>
 		</div>
 </div>
